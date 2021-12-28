@@ -2,8 +2,9 @@ import cv2
 import numpy as np
 import glob
 import imutils
-from stitcher import stitching
+from stitcher import stitcher
 image_paths = glob.glob('images/*.jpg')
+# image_paths = glob.glob('images/*.png')
 images = []
 
 for image_path in image_paths:
@@ -11,11 +12,6 @@ for image_path in image_paths:
     print(image_path)
     images.append(image)
 
+print(len(images))
 # stitch the images together to create a panorama
-result = stitching(images)
-# show the images
-cv2.imshow("Image A", image[0])
-cv2.imshow("Image B", image[1])
-cv2.imshow("Result", result)
-cv2.waitKey(0)
-
+stitcher(images)
