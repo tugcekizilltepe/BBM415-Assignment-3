@@ -1,17 +1,13 @@
-import cv2
-import numpy as np
-import glob
-import imutils
 from stitcher import stitcher
-image_paths = glob.glob('images/*.jpg')
-# image_paths = glob.glob('images/*.png')
-images = []
+import cv2
+import warnings
+warnings.filterwarnings("ignore")
 
-for image_path in image_paths:
-    image = cv2.imread(image_path)
-    print(image_path)
-    images.append(image)
+if __name__ == '__main__':
 
-print(len(images))
-# stitch the images together to create a panorama
-stitcher(images)
+   image1 = cv2.imread("images/input2.png") # image on the middle
+   image2 = cv2.imread("images/input3.png") # image on the right
+   image3 = cv2.imread("images/input1.png") # image on the left
+
+   # Call the stitcher function
+   stitcher(image1, image2, image3)
